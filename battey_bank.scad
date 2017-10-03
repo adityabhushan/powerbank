@@ -175,12 +175,13 @@ module extend_box()
 {
   y = (spring_gap + box_wall) * 2 + battery_height + 4*mm;
   x = (battery_radius * 2) * 6 + (battery_gap * 5) + ((box_wall + spring_gap) * 2)+board_width + box_wall;
-  innerY = (spring_gap + box_wall) * 2 + battery_height;
+  innerY = (spring_gap + box_wall) * 2 + battery_height+2*mm;
   innerX = (battery_radius * 2) * 6 + (battery_gap * 5) + ((box_wall + spring_gap) * 2)+board_width + box_wall;
   translate([x/2, 0, y/2])
   rotate([90, 0, 0])
   linear_extrude(box_height)
   {
+    
     difference()
     {
       square([x, y], center = true);
@@ -190,7 +191,7 @@ module extend_box()
 }
 
 color("yellow")
-extend_box();
+translate([0,5*mm,-2*mm]) extend_box();
 
 
 /*
@@ -199,5 +200,4 @@ translate([x + 8 * mm, -box_height- 0.5 * mm, ])
 rotate([90, 90, 0])
 {
   linear_extrude(1 * mm) text("80%", size=6*mm);
-}
-*/
+}*/
